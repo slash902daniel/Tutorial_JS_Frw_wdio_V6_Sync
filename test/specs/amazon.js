@@ -1,3 +1,5 @@
+import {expect as chaiExpect} from 'chai';
+
 describe('Search Description', () => {
     it('Should show the banner container', () => {
         browser.url('https://www.amazon.com.mx/');
@@ -29,5 +31,7 @@ describe('Search Description', () => {
         expect(leftMenu).toBeVisible();
 
         expect(browser).toHaveUrlContaining(urlBeforeClick);
+        chaiExpect(urlBeforeClick).to.include('amazon');
     })
+
 })   
