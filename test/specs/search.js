@@ -1,18 +1,18 @@
+import SearchPage from '../../pages/search.page';
+
 describe('Search Description', () => {
     it('Should have title', () => {
-        browser.url('https://google.com');
+        searchPage.open();
         expect(browser).toHaveTitle('Google');      
     })
 
     it('Should Do Search and verify text value', () => {
         let searchValue = 'Amazon mexico';
-        let searchInput = $('input[aria-label="Buscar"]');
-        let searchButton = $$('input[name="btnK"]')[1];
 
-        searchInput.addValue(searchValue);
-        searchButton.click();
-
-        expect(searchInput).toHaveValue(searchValue);
+        SearchPage.searchInput.addValue(searchValue);
+        SearchPage.searchButton.click();
+        
+        expect(SearchPage.searchInput).toHaveValue(searchValue);
     })
 
     it('Should Redirect to new page and verify Title', () => {
@@ -20,11 +20,11 @@ describe('Search Description', () => {
     })
 
     // it('Should have a counter of matches', () => {
-    //     let resultsStats = $('div#result-stats');
-    //     console.log('resultsStats: ' + resultsStats.getText);
-    //     console.log('resultsStats2: ' + resultsStats.getValue);
-    //     expect(resultsStats).toHaveValueContaining('Cerca de');
-    //     expect(resultsStats).toHaveValueContaining('resultados');
+    //     //let resultsStats = $('div#result-stats');
+    //     console.log('SearchPage.resultsStats: ' + SearchPage.resultsStats.getText);
+    //     console.log('SearchPage.resultsStats2: ' + SearchPage.resultsStats2.getValue);
+    //     expect(SearchPage.resultsStats).toHaveValueContaining('Cerca de');
+    //     expect(SearchPage.resultsStats).toHaveValueContaining('resultados');
     // })
     
 })

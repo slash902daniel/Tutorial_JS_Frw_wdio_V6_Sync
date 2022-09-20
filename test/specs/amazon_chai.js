@@ -1,3 +1,5 @@
+import AmazonPage from '../../pages/amazon.page';
+
 import {expect as chaiExpect} from 'chai';
 import {assert as chaiAssert} from 'chai';
 var should = require('chai').should()
@@ -5,37 +7,32 @@ var should = require('chai').should()
 
 describe('Search Description', () => {
     it('Should show the banner container', () => {
-        browser.url('https://www.amazon.com.mx/');
-        
-        let mainBanner = $('a#nav-logo-sprites');
-        expect(mainBanner).toBeDisplayed();  
+        AmazonPage.open();
+        expect(AmazonPage.mainBanner).toBeDisplayed();  
     })
 
     it('Should contain Tag link (chai expect)on banner and verify is clickable', () => {
-        let mainBanner = $('a#nav-logo-sprites');
-        const tag = mainBanner.getTagName();
+        const tag = AmazonPage.mainBanner.getTagName();
         chaiExpect(tag).to.be.equal('a');
 
-        expect(mainBanner).toHaveLinkContaining('/ref=nav_logo');
-        expect(mainBanner).toBeClickable();
+        expect(AmazonPage.mainBanner).toHaveLinkContaining('/ref=nav_logo');
+        expect(AmazonPage.mainBanner).toBeClickable();
     })
 
     it('Should contain Tag link (chai should) on banner and verify is clickable', () => {
-        let mainBanner = $('a#nav-logo-sprites');
-        const tag = mainBanner.getTagName();
+        const tag = AmazonPage.mainBanner.getTagName();
         tag.should.equal('a'); 
 
-        expect(mainBanner).toHaveLinkContaining('/ref=nav_logo');
-        expect(mainBanner).toBeClickable();
+        expect(AmazonPage.mainBanner).toHaveLinkContaining('/ref=nav_logo');
+        expect(AmazonPage.mainBanner).toBeClickable();
     })
 
     it('Should contain Tag link (chai assert) on banner and verify is clickable', () => {
-        let mainBanner = $('a#nav-logo-sprites');
-        const tag = mainBanner.getTagName();
+        const tag = AmazonPage.mainBanner.getTagName();
         chaiAssert.equal(tag, 'a');
 
-        expect(mainBanner).toHaveLinkContaining('/ref=nav_logo');
-        expect(mainBanner).toBeClickable();
+        expect(AmazonPage.mainBanner).toHaveLinkContaining('/ref=nav_logo');
+        expect(AmazonPage.mainBanner).toBeClickable();
     })
 
 })   

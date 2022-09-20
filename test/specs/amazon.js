@@ -1,9 +1,9 @@
+import AmazonPage from '../../pages/amazon.page';
+
 describe('Search Description', () => {
     it('Should show the banner container', () => {
-        browser.url('https://www.amazon.com.mx/');
-        
-        let mainBanner = $('a#nav-logo-sprites');
-        expect(mainBanner).toBeDisplayed();  
+        AmazonPage.open();
+        expect(AmazonPage.mainBanner).toBeDisplayed();  
     })
 
     it('Should show the page title', () => {
@@ -11,22 +11,17 @@ describe('Search Description', () => {
     })
 
     it('Should contain link on banner and verify is clickable', () => {
-        let mainBanner = $('a#nav-logo-sprites');
-        expect(mainBanner).toHaveLinkContaining('/ref=nav_logo');
-        expect(mainBanner).toBeClickable();
+        expect(AmazonPage.mainBanner).toHaveLinkContaining('/ref=nav_logo');
+        expect(AmazonPage.mainBanner).toBeClickable();
     })
 
     it('Should click on todo button and verify url', () => {
         let urlBeforeClick = browser.getUrl();
 
-        let todoButton = $('#nav-main .nav-left');
-        let todoButtonLabel = $('#nav-main .nav-left').$('.hm-icon-label');
-        expect(todoButtonLabel).toHaveTextContaining('Todo');
+        expect(AmazonPage.todoButtonLabel).toHaveTextContaining('Todo');
+        AmazonPage.todoButton.click();
 
-        todoButton.click();
-
-        let leftMenu = $('#hmenu-canvas');
-        expect(leftMenu).toBeVisible();
+        expect(AmazonPage.leftMenu).toBeVisible();
 
         expect(browser).toHaveUrlContaining(urlBeforeClick);
     })
