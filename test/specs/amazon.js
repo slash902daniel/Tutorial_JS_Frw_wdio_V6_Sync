@@ -62,6 +62,20 @@ describe('Search Description', () => {
 
         browser.pause(3000);
         console.log(AmazonPage.getLeftMenuVisibleItemsText());
-   })
+        
+        AmazonPage.leftMenuCloseButton.click();
+        AmazonPage.leftMenuCloseButton.waitForDisplayed({reverse: true});
+
+        AmazonPage.todoButton.waitForDisplayed();
+    })
+
+   it('Should hover over, display a element an assert it', () => {
+        console.log('test7');
+
+        AmazonPage.signInForm.moveTo();
+        browser.pause(2000);
+
+        AmazonPage.signInFormBtn.waitForClickable();
+    })
 
 })   

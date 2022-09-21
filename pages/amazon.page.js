@@ -29,6 +29,18 @@ class AmazonPage extends Page {
         return $$('#hmenu-content>ul.hmenu-visible>li>a')
     }
 
+    get leftMenuCloseButton() {
+        return $('#hmenu-canvas-background>div');
+    }
+    
+    get signInForm() {
+        return $('#nav-tools #nav-link-accountList-nav-line-1');
+    }
+    
+    get signInFormBtn() {
+        return $('#nav-flyout-ya-signin a span');
+    }
+    
     getLeftMenuVisibleItemsText() {
         //console.log('inside getLeftMenuVisibleItemsText: ---------------------------------------------------------------');
         let elementList = [];
