@@ -2,15 +2,22 @@ import Page from './page';
 
 class SearchPage extends Page {
 
-    open(){
+    open() {
         super.open('https://google.com');
     }
 
-    get searchInput() {return $('input[aria-label="Buscar"]')};
-    
-    get searchButton() {return $$('input[name="btnK"]')[1]};
-    
-    get resultsStats() {return $('div#result-stats')};
+    get searchInput() {
+        return $('input[aria-label="Buscar"]'
+        )
+    };
+
+    get searchButton() {
+        return $$('input[name="btnK"]')[1]
+    };
+
+    get resultsStats() {
+        return $('div#result-stats')
+    };
 
 }
 

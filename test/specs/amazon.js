@@ -18,7 +18,7 @@ describe('Search Description', () => {
     afterEach(() => {
         console.log('after each');
     });
-    
+
     it('Should show the banner container', () => {
         console.log('test1');
         expect(AmazonPage.mainBanner).toBeDisplayed();  
@@ -43,8 +43,25 @@ describe('Search Description', () => {
         AmazonPage.todoButton.click();
 
         expect(AmazonPage.leftMenu).toBeVisible();
-
         expect(browser).toHaveUrlContaining(urlBeforeClick);
     })
+
+    it('Should click multiple match selector by index', () => {
+        console.log('test5');
+        AmazonPage.clickLeftMenuVisibleItem(1);
+
+        //TODO WAIT FOR URL CONTAINS
+        browser.pause(5000);
+        //AmazonPage.leftMenuDummy.waitForDisplayed();
+    })
+
+    it('Should print multiple match selector data', () => {
+        console.log('test6');
+        AmazonPage.todoButton.click();
+        AmazonPage.leftMenu.waitForDisplayed();
+
+        browser.pause(3000);
+        console.log(AmazonPage.getLeftMenuVisibleItemsText());
+   })
 
 })   
