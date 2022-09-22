@@ -1,4 +1,5 @@
 import AmazonPage from '../../pages/amazon.page';
+import { waitForUrlChange, waitForUrlEqualTo, waitForUrlPartial } from '../utilities/helpers';
 
 describe('Search Description', () => {
 
@@ -76,6 +77,17 @@ describe('Search Description', () => {
         browser.pause(2000);
 
         AmazonPage.signInFormBtn.waitForClickable();
+    })
+
+    it.only('Should use utilities functions', () => {
+        console.log('test8');
+
+        waitForUrlPartial('amazon.com',5000);
+        waitForUrlEqualTo('https://www.amazon.com.mx/',5000);
+        
+        //Force url change
+        browser.url('https://www.google.com.mx/');
+        waitForUrlChange('https://www.amazon.com.mx/',5000);
     })
 
 })   
