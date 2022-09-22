@@ -1,11 +1,13 @@
 import AmazonPage from '../../pages/amazon.page';
 import { waitForUrlChange, waitForUrlEqualTo, waitForUrlPartial } from '../utilities/helpers';
+import AmazonSrc from '../resources/amazon.src';
 
 describe('Search Description', () => {
 
     before(() => {
         console.log('before ');
         AmazonPage.open();
+        waitForUrlEqualTo('https://www.amazon.com.mx/',5000);
     });
 
     beforeEach(() => {
@@ -27,7 +29,7 @@ describe('Search Description', () => {
 
     it('Should show the page title', () => {
         console.log('test2');
-        expect(browser).toHaveTitle('Amazon.com.mx: Precios bajos - Envío rápido - Millones de productos');      
+        expect(browser).toHaveTitle(AmazonSrc.hometitle);      
     })
 
     it('Should contain link on banner and verify is clickable', () => {
@@ -79,11 +81,10 @@ describe('Search Description', () => {
         AmazonPage.signInFormBtn.waitForClickable();
     })
 
-    it.only('Should use utilities functions', () => {
+    it('Should use utilities functions', () => {
         console.log('test8');
 
         waitForUrlPartial('amazon.com',5000);
-        waitForUrlEqualTo('https://www.amazon.com.mx/',5000);
         
         //Force url change
         browser.url('https://www.google.com.mx/');
