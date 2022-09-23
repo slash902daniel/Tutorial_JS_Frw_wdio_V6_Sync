@@ -22,7 +22,7 @@ exports.config = {
     //
     specs: [
         //'./test/specs/**/*.js'
-        './test/specs/amazon_chai.js'
+        './test/specs/amazon.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -63,7 +63,12 @@ exports.config = {
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    },
+    {
+        maxInstances: 5,
+        browserName: 'firefox'
+    }
+    ],
     //
     // ===================
     // Test Configurations
@@ -71,7 +76,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'error',
     //
     // Set specific log levels per logger
     // loggers:
