@@ -1,6 +1,8 @@
+## BASED ON TUTORIAL
+https://www.youtube.com/playlist?list=PL6AdzyjjD5HBbt9amjf3wIVMaobb28ZYN
+
 Launch test:
 npx wdio wdio.conf.js
-
 
 ABOUT TEST SPECS ++++++++++++++++++++++++++++
 
