@@ -21,8 +21,8 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        //'./test/specs/**/*.js'
-        './test/specs/amazon.js'
+        './test/specs/**/*.js'
+        //'./test/specs/amazon.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -50,7 +50,8 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
+    capabilities: [
+        {
     
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
@@ -64,10 +65,18 @@ exports.config = {
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
     },
+    // {
+    //     maxInstances: 5,
+    //     browserName: 'firefox'
+    // },
     {
         maxInstances: 5,
-        browserName: 'firefox'
-    }
+        browserName: 'MicrosoftEdge'
+    },
+    // {
+    //     maxInstances: 5,
+    //     browserName: 'internet explorer'
+    // }
     ],
     //
     // ===================
@@ -116,7 +125,26 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    
+    //services: ['chromedriver'],
+    services: ['selenium-standalone'],
+    // services: [
+    //     ['selenium-standalone', {
+    //         logPath: 'logs',
+    //         installArgs: {
+    //             drivers: {
+    //                 chrome: { version: '79.0.3945.88' },
+    //                 firefox: { version: '0.26.0' }
+    //             }
+    //         },
+    //         args: {
+    //             drivers: {
+    //                 chrome: { version: '79.0.3945.88' },
+    //                 firefox: { version: '0.26.0' }
+    //             }
+    //         },
+    //     }]
+    // ],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
