@@ -51,20 +51,20 @@ exports.config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [
-        {
+    //     {
     
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-        maxInstances: 5,
-        //
-        browserName: 'chrome',
-        acceptInsecureCerts: true
-        // If outputDir is provided WebdriverIO can capture driver session logs
-        // it is possible to configure which logTypes to include/exclude.
-        // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-        // excludeDriverLogs: ['bugreport', 'server'],
-    },
+    //     // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+    //     // grid with only 5 firefox instances available you can make sure that not more than
+    //     // 5 instances get started at a time.
+    //     maxInstances: 5,
+    //     //
+    //     browserName: 'chrome',
+    //     acceptInsecureCerts: true
+    //     // If outputDir is provided WebdriverIO can capture driver session logs
+    //     // it is possible to configure which logTypes to include/exclude.
+    //     // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
+    //     // excludeDriverLogs: ['bugreport', 'server'],
+    // },
     // {
     //     maxInstances: 5,
     //     browserName: 'firefox'
@@ -170,7 +170,7 @@ exports.config = {
     reporters: [['allure', {
         outputDir: 'allure-results',
         // disableWebdriverStepsReporting: true,
-        // disableWebdriverScreenshotsReporting: true,
+        //disableWebdriverScreenshotsReporting: false,
     }]],
 
 
@@ -278,8 +278,41 @@ exports.config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: function(
+            test, 
+            context, 
+            { error, result, duration, passed, retries }
+        ) {
+            console.log("LEO!! afterTest ==============================================================");
+
+            //console.log("LEO!! test -------------------------------------");
+            //console.log(test);
+
+            //console.log("LEO!! context -------------------------------------"); 
+            //console.log(context);
+            
+            console.log("LEO!! error -----------------------------------");
+            console.log(error);
+
+            console.log("LEO!! result -----------------------------------");
+            console.log(result);
+
+            console.log("LEO!! duration----------------------------------");
+            console.log(duration);
+
+            console.log("LEO!! passed------------------------------------");
+            console.log(passed);
+
+            console.log("LEO!! retries------------------------------------");
+            console.log(retries);
+
+            // browser.takeScreenshot();
+
+            if (error) {
+                console.log("LEO!! before take SS");
+                browser.takeScreenshot();
+            }
+    },
 
 
     /**

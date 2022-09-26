@@ -32,7 +32,10 @@ describe('Search Description', () => {
     it('Should show the page title', () => {
         allureReporter.addSeverity('Critical');
         console.log('test2');
-        expect(browser).toHaveTitle(AmazonSrc.hometitle);      
+        expect(browser).toHaveTitle(AmazonSrc.hometitle);  
+        
+        //Force Failure
+        expect(browser).toHaveTitle('dummy title for force failure');  
     })
 
     it('Should contain link on banner and verify is clickable', () => {
