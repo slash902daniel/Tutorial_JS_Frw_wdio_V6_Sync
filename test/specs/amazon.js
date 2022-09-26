@@ -1,6 +1,7 @@
 import AmazonPage from '../../pages/amazon.page';
 import { waitForUrlChange, waitForUrlEqualTo, waitForUrlPartial } from '../utilities/helpers';
 import AmazonSrc from '../resources/amazon.src';
+import allureReporter from '@wdio/allure-reporter'
 
 describe('Search Description', () => {
 
@@ -23,16 +24,19 @@ describe('Search Description', () => {
     });
 
     it('Should show the banner container', () => {
+        allureReporter.addFeature('Feature Amazon')
         console.log('test1');
         expect(AmazonPage.mainBanner).toBeDisplayed();  
     })
 
     it('Should show the page title', () => {
+        allureReporter.addSeverity('Critical');
         console.log('test2');
         expect(browser).toHaveTitle(AmazonSrc.hometitle);      
     })
 
     it('Should contain link on banner and verify is clickable', () => {
+        allureReporter.addStory('Story Amazon')
         console.log('test3');
         expect(AmazonPage.mainBanner).toHaveLinkContaining('/ref=nav_logo');
         expect(AmazonPage.mainBanner).toBeClickable();
