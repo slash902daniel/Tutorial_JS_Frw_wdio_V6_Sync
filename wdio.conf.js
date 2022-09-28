@@ -128,12 +128,12 @@ exports.config = {
     
     // services: ['chromedriver'],
 
-    // services: ['selenium-standalone'],
+    services: ['selenium-standalone'],
 
     // //BROWSERSTACK -------------------------
-    user: process.env.BROWSERSTACK_USERNAME,
-    key: process.env.BROWSERSTACK_ACCESS_KEY,
-    services: ['browserstack'],
+    // user: process.env.BROWSERSTACK_USERNAME,
+    // key: process.env.BROWSERSTACK_ACCESS_KEY,
+    // services: ['browserstack'],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -163,7 +163,10 @@ exports.config = {
         //disableWebdriverScreenshotsReporting: false,
         }],
         ['junit', {
-            outputDir: './junit-report'
+            outputDir: './junit-report',
+            outputFileFormat: function (options) {
+                return `results-${new Date().getTime()}.xml`
+            }
         }]
     ],
     
