@@ -156,11 +156,17 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     // reporters: ['spec'],
-    reporters: [['allure', {
+    reporters: [
+        ['allure', {
         outputDir: 'allure-results',
         // disableWebdriverStepsReporting: true,
         //disableWebdriverScreenshotsReporting: false,
-    }]],
+        }],
+        ['junit', {
+            outputDir: './junit-report'
+        }]
+    ],
+    
 
 
     
@@ -225,6 +231,7 @@ exports.config = {
      * @param {Object}         browser      instance of created browser/device session
      */
     before: function (capabilities, specs) {
+        console.log('Running with NODE_ENV= ' + process.env.NODE_ENV);
         browser.maximizeWindow();
     },
     /**
